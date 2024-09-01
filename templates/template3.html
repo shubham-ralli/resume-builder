@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .resume-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            /* border-radius: 8px; */
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin-bottom: 10px;
+        }
+
+        .profile h1 {
+            font-size: 1.8em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .profile p {
+            font-size: 1.1em;
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        .contact-info,
+        .skills {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding: 5px 0;
+            border-bottom: 1px solid #555;
+            font-size: 1.1em;
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .summary,
+        .experience,
+        .education {
+            margin-bottom: 30px;
+        }
+
+        .summary p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .experience .job h3,
+        .education p {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .experience .job p,
+        .education p:last-of-type {
+            font-size: 1.1em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .experience ul li {
+            padding-left: 15px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .experience ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume-wrapper">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="profile.jpg" alt="John Doe" class="profile-img profile-photo" id="profile-photo-preview">
+                <h1 id="name-preview">John Doe</h1>
+                <p id="job-title-preview">Front-End Developer</p>
+            </div>
+
+            <div class="contact-info">
+                <h2>Contact</h2>
+                <p>Email: <span id="email-preview">johndoe@example.com</span></p>
+                <p>Phone: <span id="phone-preview">(123) 456-7890</span></p>
+                <p>Location: <span id="location-preview">New York, USA</span></p>
+            </div>
+
+            <div class="skills">
+                <h2>Skills</h2>
+                <ul id="skills-list" class="list-inline">
+                    <!-- Skills will be injected here -->
+                </ul>
+            </div>
+
+            <div class="skills">
+                <h2>Languages</h2>
+                <ul id="languages-list" class="list-inline">
+                    <!-- Skills will be injected here -->
+                </ul>
+            </div>
+
+
+        </aside>
+
+        <main class="content">
+            <section class="summary">
+                <h2>Summary</h2>
+                <p id="professional-summary-preview">Experienced front-end developer with a passion for creating
+                    responsive and user-friendly web
+                    applications. Proficient in HTML, CSS, JavaScript, and modern front-end frameworks.</p>
+            </section>
+
+            <section class="experience">
+                <h2>Experience</h2>
+
+                <ul id="experience-list">
+                    <!-- Experience items will be injected here -->
+                </ul>
+
+            </section>
+
+            <section class="education">
+                <h2>Education</h2>
+                <p>Bachelor of Science in Computer Science</p>
+                <p>University of Technology - 2016</p>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
