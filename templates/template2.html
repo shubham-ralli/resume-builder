@@ -1,109 +1,168 @@
-<style>
-    .template2 {
-        padding: 22px;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    .template2 .resume-container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-    .template2.header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #333;
-        padding-bottom: 10px;
-    }
+        .resume-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            /* border-radius: 8px; */
+            overflow: hidden;
+        }
 
-    .template2 .header img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 20px;
-    }
+        header {
+            background-color: #3b5998;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
-    .template2 .header h1 {
-        margin: 0;
-        font-size: 2rem;
-    }
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
 
-    .template2 .header h2 {
-        margin: 0;
-        color: #666;
-    }
+        .header-content p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
 
-    .template2 .section {
-        margin-bottom: 20px;
-    }
+        .main-content {
+            display: flex;
+        }
 
-    .template2 .section h3 {
-        border-bottom: 2px solid #333;
-        padding-bottom: 5px;
-        margin-bottom: 10px;
-    }
+        .sidebar {
+            width: 30%;
+            background-color: #f0f0f0;
+            padding: 30px 20px;
+            box-shadow: inset -5px 0 5px -5px rgba(0, 0, 0, 0.1);
+        }
 
-    .template2 .experience-item,
-    .template2 .skill-item {
-        margin-bottom: 10px;
-    }
+        .sidebar h2 {
+            font-size: 1.5em;
+            border-bottom: 2px solid #3b5998;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-    .template2 .experience-item {
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+        .sidebar p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #555;
+        }
 
-    .template2 .skill-item {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px;
-        border-radius: 4px;
-        background-color: #f0f0f0;
-    }
+        .content {
+            flex: 1;
+            padding: 30px 20px;
+        }
 
-    .template2 .contact-info p {
-        margin: 0;
-    }
-</style>
+        .content section {
+            margin-bottom: 30px;
+        }
+
+        .content h2 {
+            font-size: 1.8em;
+            color: #333;
+            border-bottom: 2px solid #3b5998;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .job h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 0 0 5px;
+        }
+
+        .job p {
+            font-size: 1.1em;
+            color: #777;
+            margin: 5px 0 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="resume-container template2">
-        <div class="header">
-            <img src="https://via.placeholder.com/120" alt="Profile Photo" id="profile-photo-preview">
-            <div>
-                <h1 id="name-preview"></h1>
-                <h2 id="job-title-preview"></h2>
-                <div class="contact-info">
-                    <p>Email: <span id="email-preview"></span></p>
-                    <p>Phone: <span id="phone-preview"></span></p>
-                    <p>Location: <span id="location-preview"></span></p>
-                </div>
+    <div class="resume-container">
+        <header>
+            <div class="header-content">
+                <h1 id="name-preview">John Doe</h1>
+                <p id="job-title-preview">Front-End Developer</p>
             </div>
-        </div>
+        </header>
 
-        <div class="section">
-            <h3>Professional Summary</h3>
-            <p id="professional-summary-preview"></p>
-        </div>
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="contact-info">
+                    <h2>Contact</h2>
+                    <p>Email: <span id="email-preview">johndoe@example.com</span></p>
+                    <p>Phone: <span id="phone-preview">(123) 456-7890</span></p>
+                    <p>Location: <span id="location-preview">New York, USA</span></p>
+                </section>
 
-        <div class="section">
-            <h3>Experience</h3>
-            <div id="experience-list">
-                <!-- Experience items will be injected here -->
-            </div>
-        </div>
+                <section class="profile-summary">
+                    <h2>Profile</h2>
+                    <p id="professional-summary-preview">Passionate front-end developer with over 5 years of experience
+                        in building responsive,
+                        user-friendly web applications. Skilled in HTML, CSS, JavaScript, and modern frameworks.</p>
+                </section>
+            </aside>
 
-        <div class="section">
-            <h3>Skills</h3>
-            <div id="skills-list" class="list-inline">
-                <!-- Skills will be injected here -->
-            </div>
+            <main class="content">
+                <section class="experience">
+                    <h2>Experience</h2>
+                    <ul id="experience-list">
+                        <!-- Experience items will be injected here -->
+                    </ul>
+                </section>
+
+                <section class="education">
+                    <h2>Education</h2>
+                    <p>Bachelor of Science in Computer Science</p>
+                    <p>University of Technology - 2016</p>
+                </section>
+
+                <section class="skills">
+                    <h2>Skills</h2>
+                    <ul id="skills-list" class="list-inline">
+                        <!-- Skills will be injected here -->
+                    </ul>
+                </section>
+
+                <section class="skills">
+                    <h2>Languages</h2>
+                    <ul id="languages-list" class="list-inline">
+                        <!-- Skills will be injected here -->
+                    </ul>
+                </section>
+            </main>
         </div>
     </div>
+</body>
+
+</html>
