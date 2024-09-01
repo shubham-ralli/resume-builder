@@ -1,0 +1,44 @@
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.page {
+    display: flex !important;
+}
+
+.detailsbox {
+    width: 40%;
+    padding: 32px;
+    height: 100vh !important;
+    overflow-y: scroll;
+}
+
+.previewbox {
+    width: 60%;
+    background: rgb(101, 110, 131);
+    padding: 32px !important;
+    height: 100vh !important;
+    overflow-y: scroll;
+}
+
+.profile-photo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.experience-item {
+    margin-bottom: 20px;
+}
+
+#resume-preview {
+    background: #FFF !important;
+    margin-top: 32px !important;
+}
