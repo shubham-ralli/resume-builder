@@ -95,6 +95,30 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-secondary" id="add-skill">Add Skill</button>
+                <hr>
+                <div id="languages-section">
+                    <h3>Languages</h3>
+                    <div class="language-item form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control language-name" placeholder="Enter language">
+                            </div>
+                            <div class="col">
+                                <select class="form-control language-level">
+                                    <option value="1">Level 1</option>
+                                    <option value="2">Level 2</option>
+                                    <option value="3">Level 3</option>
+                                    <option value="4">Level 4</option>
+                                    <option value="5">Level 5</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-danger btn-sm delete-language">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary" id="add-language">Add Language</button>
             </form>
         </div>
 
@@ -169,6 +193,7 @@
 
                 updateExperiencePreview(); // Update experience section
                 updateSkillsPreview(); // Update skills section
+                updateLanguagesPreview(); // Update languages section
             }
 
             // Function to update experience section in preview
@@ -194,17 +219,30 @@
             function updateSkillsPreview() {
                 $('#resume-preview').find('#skills-list').empty();
                 $('#skills-section .skill-item').each(function () {
-                    let skill = $(this).find('.skill-name').val();
-                    if (skill.trim()) {
-                        $('#resume-preview').find('#skills-list').append(`<li class="list-inline-item">${skill}</li>`);
+                    let skillName = $(this).find('.skill-name').val();
+                    if (skillName) {
+                        let listItem = `<li>${skillName}</li>`;
+                        $('#resume-preview').find('#skills-list').append(listItem);
                     }
                 });
             }
 
-            // Add new experience item
+            // Function to update languages section in preview
+            function updateLanguagesPreview() {
+                $('#resume-preview').find('#languages-list').empty();
+                $('#languages-section .language-item').each(function () {
+                    let languageName = $(this).find('.language-name').val();
+                    let languageLevel = $(this).find('.language-level').val();
+                    if (languageName) {
+                        let listItem = `<li>${languageName} (Level ${languageLevel})</li>`;
+                        $('#resume-preview').find('#languages-list').append(listItem);
+                    }
+                });
+            }
+
+            // Add new experience
             $('#add-experience').click(function () {
                 $('#experience-section').append(`
-                    <hr>
                     <div class="experience-item">
                         <div class="form-row">
                             <div class="form-group col">
@@ -258,6 +296,38 @@
             $(document).on('click', '.delete-skill', function () {
                 $(this).closest('.skill-item').remove();
                 updateResumePreview(); // Update preview when a skill is deleted
+            });
+
+            // Add new language
+            $('#add-language').click(function () {
+                $('#languages-section').append(`
+                    <div class="language-item form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <input type="text" class="form-control language-name" placeholder="Enter language">
+                            </div>
+                            <div class="col">
+                                <select class="form-control language-level">
+                                    <option value="1">Level 1</option>
+                                    <option value="2">Level 2</option>
+                                    <option value="3">Level 3</option>
+                                    <option value="4">Level 4</option>
+                                    <option value="5">Level 5</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-danger btn-sm delete-language">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                updateResumePreview(); // Update preview when a new language is added
+            });
+
+            // Delete language item
+            $(document).on('click', '.delete-language', function () {
+                $(this).closest('.language-item').remove();
+                updateResumePreview(); // Update preview when a language is deleted
             });
 
             // Download resume as PDF
