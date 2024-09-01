@@ -1,0 +1,105 @@
+<style>
+    .template2 .resume-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .template2.header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 10px;
+    }
+
+    .template2 .header img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+    }
+
+    .template2 .header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .template2 .header h2 {
+        margin: 0;
+        color: #666;
+    }
+
+    .template2 .section {
+        margin-bottom: 20px;
+    }
+
+    .template2 .section h3 {
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .template2 .experience-item,
+    .template2 .skill-item {
+        margin-bottom: 10px;
+    }
+
+    .template2 .experience-item {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .template2 .skill-item {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 4px;
+        background-color: #f0f0f0;
+    }
+
+    .template2 .contact-info p {
+        margin: 0;
+    }
+</style>
+</head>
+
+<body>
+    <div class="resume-container template2">
+        <div class="header">
+            <img src="https://via.placeholder.com/120" alt="Profile Photo" id="profile-photo-preview">
+            <div>
+                <h1 id="name-preview"></h1>
+                <h2 id="job-title-preview"></h2>
+                <div class="contact-info">
+                    <p>Email: <span id="email-preview"></span></p>
+                    <p>Phone: <span id="phone-preview"></span></p>
+                    <p>Location: <span id="location-preview"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Professional Summary</h3>
+            <p id="professional-summary-preview"></p>
+        </div>
+
+        <div class="section">
+            <h3>Experience</h3>
+            <div id="experience-list">
+                <!-- Experience items will be injected here -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Skills</h3>
+            <div id="skills-list" class="list-inline">
+                <!-- Skills will be injected here -->
+            </div>
+        </div>
+    </div>
