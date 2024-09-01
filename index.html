@@ -119,6 +119,51 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-secondary" id="add-language">Add Language</button>
+
+                <hr>
+                <div class="">
+                    <h3>Education</h3>
+                    <div id="education-section">
+                        <!-- Default education entry -->
+                        <div class="education-item">
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="education-school">School</label>
+                                    <input type="text" class="form-control education-school"
+                                        placeholder="Enter school name">
+                                </div>
+                                <div class="form-group col">
+                                    <label for="education-degree">Degree</label>
+                                    <input type="text" class="form-control education-degree" placeholder="Enter degree">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-3">
+                                    <label for="education-start-date">Start Date</label>
+                                    <input type="month" class="form-control education-start-date">
+                                </div>
+                                <div class="form-group col-3">
+                                    <label for="education-end-date">End Date</label>
+                                    <input type="month" class="form-control education-end-date">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label for="education-city">City</label>
+                                    <input type="text" class="form-control education-city" placeholder="Enter city">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="education-description">Description</label>
+                                <textarea class="form-control education-description editor-content" rows="3"
+                                    placeholder="Describe your education"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-danger btn-sm delete-education">Delete</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary mt-3" id="add-education">Add Education</button>
+                    <hr>
+                </div>
+
             </form>
         </div>
 
@@ -194,6 +239,7 @@
                 updateExperiencePreview(); // Update experience section
                 updateSkillsPreview(); // Update skills section
                 updateLanguagesPreview(); // Update languages section
+                updateEducationPreview();
             }
 
             // Function to update experience section in preview
@@ -329,6 +375,79 @@
                 $(this).closest('.language-item').remove();
                 updateResumePreview(); // Update preview when a language is deleted
             });
+
+
+
+            function updateEducationPreview() {
+                $('#education-list').empty();
+                $('#education-section .education-item').each(function () {
+                    let school = $(this).find('.education-school').val();
+                    let degree = $(this).find('.education-degree').val();
+                    let startDate = $(this).find('.education-start-date').val();
+                    let endDate = $(this).find('.education-end-date').val();
+                    let city = $(this).find('.education-city').val();
+                    let description = $(this).find('.education-description').val();
+
+                    let listItem = `<li class="education-item">
+                            <strong>${school}</strong>, ${degree} (${startDate} - ${endDate})
+                            <p>${city}</p>
+                            <p>${description}</p>
+                        </li>`;
+
+                    $('#education-list').append(listItem);
+                });
+            }
+
+
+            $('#add-education').click(function () {
+                $('#education-section').append(`
+                <hr>
+                    <div class="education-item">
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="education-school">School</label>
+                                <input type="text" class="form-control education-school" placeholder="Enter school name">
+                            </div>
+                            <div class="form-group col">
+                                <label for="education-degree">Degree</label>
+                                <input type="text" class="form-control education-degree" placeholder="Enter degree">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-3">
+                                <label for="education-start-date">Start Date</label>
+                                <input type="month" class="form-control education-start-date">
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="education-end-date">End Date</label>
+                                <input type="month" class="form-control education-end-date">
+                            </div>
+                        
+                        <div class="form-group col">
+                            <label for="education-city">City</label>
+                            <input type="text" class="form-control education-city" placeholder="Enter city">
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="education-description">Description</label>
+                            <textarea class="form-control education-description editor-content" rows="3" placeholder="Describe your education"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm delete-education">Delete</button>
+                    </div>
+                `);
+                updateEducationPreview(); // Update preview when new education is added
+            });
+
+
+
+            // Delete education item
+            $(document).on('click', '.delete-education', function () {
+                $(this).closest('.education-item').remove();
+                updateEducationPreview(); // Update preview when an education item is deleted
+            });
+
+
+
 
             // Download resume as PDF
             $('#download-resume').click(function () {
