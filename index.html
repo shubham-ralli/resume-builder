@@ -6,52 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            margin: 0 !important;
-            padding: 0 !important;
-        }
 
-        .page {
-            display: flex !important;
-        }
-
-        .detailsbox {
-            width: 40%;
-            padding: 32px;
-            height: 100vh !important;
-            overflow-y: scroll;
-        }
-
-        .previewbox {
-            width: 60%;
-            background: rgb(101, 110, 131);
-            padding: 32px !important;
-            height: 100vh !important;
-            overflow-y: scroll;
-        }
-
-        .profile-photo-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .experience-item {
-            margin-bottom: 20px;
-        }
-
-        #resume-preview {
-            background: #FFF !important;
-            margin-top: 32px !important;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -248,14 +204,14 @@
                     let endDate = $(this).find('.experience-end-date').val();
                     let description = $(this).find('.experience-description').val();
 
-                    if (jobTitle.trim() && employer.trim()) { // Only add if job title and employer are filled
-                        let listItem = `<li>
+                    // if (jobTitle.trim()) {
+                    let listItem = `<li>
                             <strong>${jobTitle}</strong> at ${employer} (${startDate} - ${endDate})
                             <p>${description}</p>
                         </li>`;
 
-                        $('#resume-preview').find('#experience-list').append(listItem);
-                    }
+                    $('#resume-preview').find('#experience-list').append(listItem);
+                    // }
                 });
             }
 
@@ -273,6 +229,7 @@
             // Add new experience item
             $('#add-experience').click(function () {
                 $('#experience-section').append(`
+                <hr>
                     <div class="experience-item">
                          <div class="form-row">
                         <div class="form-group col">
@@ -317,7 +274,6 @@
                 html2pdf().from(element).save('resume.pdf');
             });
 
-            // Initialize with the first template
             loadTemplate($('#template-select').val());
         });
     </script>
