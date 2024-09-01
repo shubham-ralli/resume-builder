@@ -1,0 +1,58 @@
+<style>
+    .template1 .profile-photo-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .template1 .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .template1 h2,
+    .template1 h4 {
+        margin: 0;
+    }
+
+    .template1 h3 {
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    .template1 .experience-item,
+    .template1 .skill-item {
+        margin-bottom: 10px;
+    }
+
+    .template1 .skill-item {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 4px;
+        background-color: #f0f0f0;
+    }
+</style>
+
+<div class="resume-container template1">
+    <div class="profile-photo-container">
+        <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-photo" id="profile-photo-preview">
+    </div>
+    <h2 id="name-preview"></h2>
+    <h4 id="job-title-preview"></h4>
+    <p>Email: <span id="email-preview"></span></p>
+    <p>Phone: <span id="phone-preview"></span></p>
+    <p>Location: <span id="location-preview"></span></p>
+    <h3>Professional Summary</h3>
+    <p id="professional-summary-preview"></p>
+    <h3>Experience</h3>
+    <ul id="experience-list">
+        <!-- Experience items will be injected here -->
+    </ul>
+    <h3>Skills</h3>
+    <ul id="skills-list" class="list-inline">
+        <!-- Skills will be injected here -->
+    </ul>
+</div>
