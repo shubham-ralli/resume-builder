@@ -166,24 +166,74 @@
                     <hr>
                 </div>
 
+
+
+
             </form>
         </div>
 
         <div class="previewbox">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label for="template-select">Select Template</label>
-                    <select id="template-select" class="form-control">
-                        <option value="template1.html">Template 1</option>
-                        <option value="template2.html">Template 2</option>
-                        <option value="template3.html">Template 3</option>
-                    </select>
-                </div>
+
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Select template
+                </button>
+
                 <button type="button" class="btn btn-success" id="download-resume">Download Resume as PDF</button>
             </div>
 
             <div id="resume-preview">
                 <!-- Live preview will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="form-group">
+
+                        <div id="template-select">
+                            <div class="template-item">
+                                <input type="checkbox" id="template1" name="template" value="template1.html" checked>
+                                <label for="template1">
+                                    <img id="image-template1"
+                                        src="https://cdn.create.microsoft.com/catalog-assets/en-us/ce343500-4aff-4dfa-b337-57c78459c6ee/thumbnails/616/modern-nursing-resume-orange-modern-geometric-2-1-b3fad7d361c3.webp"
+                                        alt="Template 1" class="template-image" /> <span class="tempname">Template
+                                        1</span></label>
+                            </div>
+                            <div class="template-item">
+                                <input type="checkbox" id="template2" name="template" value="template2.html">
+                                <label for="template2">
+                                    <img id="image-template2"
+                                        src="https://cdn.create.microsoft.com/catalog-assets/en-us/513e8e49-7d86-407f-ae5e-898e006202d2/thumbnails/600/modern-bold-sales-resume-white-modern-simple-1-1-327fadfd010c.webp"
+                                        alt="Template 2" class="template-image" /><span class="tempname">Template
+                                        2</span></label>
+                            </div>
+                            <div class="template-item">
+                                <input type="checkbox" id="template3" name="template" value="template3.html">
+                                <label for="template3">
+                                    <img id="image-template3"
+                                        src="https://cdn.create.microsoft.com/catalog-assets/en-us/7b2fd440-f29a-4a90-855a-84948a8ae570/thumbnails/600/basic-modern-resume-modern-simple-1-1-c07b9d4f71e2.webp"
+                                        alt="Template 3" class="template-image" /><span class="tempname">Template
+                                        3</span></label>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -196,22 +246,64 @@
 
 
         $(document).ready(function () {
+
+
+            $('#template-select input[type="checkbox"]').change(function () {
+                // Uncheck all other checkboxes and remove 'active' class from all images and labels
+                $('#template-select input[type="checkbox"]').not(this).prop('checked', false);
+                $('#template-select .template-item').removeClass('active');
+                $('#template-select .template-image').removeClass('active');
+
+                // Add 'active' class to the checked checkbox's parent item and show its image
+                if ($(this).is(':checked')) {
+                    let selectedTemplate = $(this).val();
+                    let imageId = '#image-' + selectedTemplate.split('.')[0]; // Map value to image id
+
+                    $(this).closest('.template-item').addClass('active');
+                    $(imageId).addClass('active');
+
+                    // Load the selected template
+                    loadTemplate(selectedTemplate);
+                } else {
+                    // Clear the template preview if unchecked
+                    $('#resume-preview').empty();
+                }
+            });
+
+
+
+
             // Automatically update resume preview when user inputs data
             $('#user-profile-form').on('input change', function () {
                 updateResumePreview();
             });
 
             // Change template
-            $('#template-select').change(function () {
-                let selectedTemplate = $(this).val();
-                loadTemplate(selectedTemplate);
-            });
+            // $('#template-select').change(function () {
+            //     let selectedTemplate = $(this).val();
+            //     loadTemplate(selectedTemplate);
+            // });
 
             // Function to load the selected template
+            // function loadTemplate(template) {
+            //     $.get('templates/' + template, function (data) {
+            //         $('#resume-preview').html(data);
+            //         updateResumePreview(); // Ensure that preview is updated with new template
+            //     });
+            // }
+
             function loadTemplate(template) {
+                if (!template) return; // No template to load
+
+                // Clear existing template content
+                $('#resume-preview').empty();
+
+                // Load the new template
                 $.get('templates/' + template, function (data) {
                     $('#resume-preview').html(data);
-                    updateResumePreview(); // Ensure that preview is updated with new template
+                    updateResumePreview(); // Ensure the preview is updated with new template
+                }).fail(function () {
+                    console.error('Failed to load template:', template);
                 });
             }
 
@@ -467,8 +559,24 @@
                 html2pdf().from($('#resume-preview')[0]).set(opt).save();
             });
 
+
+            // Initialize the default template on page load
+            function initializeDefaultTemplate() {
+                let defaultChecked = $('#template-select input[type="checkbox"]:checked');
+                if (defaultChecked.length > 0) {
+                    let defaultTemplate = defaultChecked.val();
+                    let imageId = '#image-' + defaultTemplate.split('.')[0]; // Map value to image id
+
+                    $(defaultChecked).closest('.template-item').addClass('active');
+                    $(imageId).addClass('active');
+                    loadTemplate(defaultTemplate);
+                }
+            }
+
+            initializeDefaultTemplate(); // Call on page load
+
             // Load initial template
-            loadTemplate($('#template-select').val());
+            // loadTemplate($('#template-select').val());
         });
     </script>
 </body>
