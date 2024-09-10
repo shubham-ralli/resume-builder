@@ -3,6 +3,7 @@ body {
     padding: 0 !important;
 }
 
+
 .page {
     display: flex !important;
 }
@@ -41,4 +42,34 @@ body {
 #resume-preview {
     background: #FFF !important;
     margin-top: 32px !important;
+}
+
+
+.template-image {
+    /* display: none; */
+    /* Hide images by default */
+    width: 100%;
+    /* Adjust width as needed */
+    max-width: 300px;
+    /* Adjust max-width as needed */
+    margin-top: 10px;
+}
+
+.template-image.active {
+    display: block;
+    /* Show image when active */
+}
+
+.template-item .active {
+    border: 2px solid #007bff;
+    /* Highlight checked items */
+}
+
+#template-select {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.template-item input {
+    display: none;
 }
