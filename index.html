@@ -167,6 +167,18 @@
                 </div>
 
 
+                <hr>
+
+                <div class="Hobbies">
+                    <h3>Hobbies</h3>
+
+                    <div class="form-group">
+                        <textarea id="hobbies-summary" class="form-control" rows="3"
+                            placeholder="Write a brief summary"></textarea>
+                    </div>
+
+
+                </div>
 
 
             </form>
@@ -315,6 +327,10 @@
                 let phone = $('#phone').val();
                 let location = $('#location').val();
                 let professionalSummary = $('#professional-summary').val();
+                let hobbiesSummary = $('#hobbies-summary').val();
+
+
+
 
                 $('#resume-preview').find('#name-preview').text(name);
                 $('#resume-preview').find('#job-title-preview').text(jobTitle);
@@ -322,6 +338,8 @@
                 $('#resume-preview').find('#phone-preview').text(phone);
                 $('#resume-preview').find('#location-preview').text(location);
                 $('#resume-preview').find('#professional-summary-preview').text(professionalSummary);
+
+                $('#resume-preview').find('#hobbies-summary-preview').text(hobbiesSummary);
 
                 // Update profile photo
                 let profilePhoto = $('#profile-photo').prop('files')[0];
